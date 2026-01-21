@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hair Sensation Hub | Your Hair Matters</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #e3a6dd;
+            --secondary-color: #e3bba6;
+            --button-green: #ed9a6d;
+            --button-pink: #ed6dd1;
+            --emoji-gradient-start: #facdd7;
+            --emoji-gradient-end: #c41238;
+            --accent-color: #f5f0e9;
+            --text-color: #333333;
+            --light-text: #666666;
+            --white: #ffffff;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-color);
+            background-color: var(--accent-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            padding: 40px 0 30px;
+            text-align: center;
+            border-radius: 0 0 30px 30px;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .title-container {
+            margin-bottom: 25px;
+        }
+        
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            color: var(--white);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+        
+        .subtitle {
+            font-size: 1.4rem;
+            color: var(--white);
+            font-weight: 300;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+        
+        /* Phone Number Display */
+        .phone-number {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--white);
+            margin: 20px 0;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+            letter-spacing: 1px;
+        }
+        
+        /* Emoji Container with New Gradient */
+        .emoji-container {
+            position: relative;
+            height: 120px;
+            margin: 30px auto 0;
+            width: 100%;
+            max-width: 800px;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--emoji-gradient-start) 0%, var(--emoji-gradient-end) 100%);
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: var(--shadow);
+        }
+        
+        /* Single emoji container */
+        .single-emoji-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .current-emoji {
+            font-size: 4.5rem;
+            opacity: 0;
+            position: absolute;
+            animation: emojiSequence 2s ease-in-out infinite;
+        }
+        
+        /* Sequential Animation for Single Emoji */
+        @keyframes emojiSequence {
+            0% {
+                opacity: 0;
+                transform: translateY(-100px) scale(0.2);
+            }
+            25% {
+                opacity: 1;
+                transform: translateY(0) scale(1.3);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            75% {
+                opacity: 0.8;
+                transform: scale(0.9);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(100px) scale(0.2);
+            }
+        }
+        
+        /* Different starting positions for variety */
+        .emoji-1 { animation-delay: 0s; }
+        .emoji-2 { animation-delay: 2s; }
+        .emoji-3 { animation-delay: 4s; }
+        .emoji-4 { animation-delay: 6s; }
+        .emoji-5 { animation-delay: 8s; }
+        .emoji-6 { animation-delay: 10s; }
+        .emoji-7 { animation-delay: 12s; }
+        .emoji-8 { animation-delay: 14s; }
+        .emoji-9 { animation-delay: 16s; }
+        .emoji-10 { animation-delay: 18s; }
+        .emoji-11 { animation-delay: 20s; }
+        .emoji-12 { animation-delay: 22s; }
+        
+        /* Video Container */
+        .video-container {
+            margin: 30px auto;
+            max-width: 800px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+        }
+        
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .video-label {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .youtube-label i {
+            color: #FF0000;
+        }
+        
+        /* Button Styles with New Colors - Updated layout */
+        .button-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            margin: 40px 0 30px;
+        }
+        
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 18px 30px;
+            font-size: 1.2rem;
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            min-width: 300px;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn i {
+            font-size: 1.4rem;
+        }
+        
+        .btn-reviews {
+            background-color: var(--button-pink);
+            color: var(--white);
+            border: 2px solid var(--button-pink);
+        }
+        
+        .btn-reviews:hover {
+            background-color: transparent;
+            color: var(--button-pink);
+            transform: translateY(-5px);
+        }
+        
+        .btn-guide {
+            background-color: var(--button-green);
+            color: var(--white);
+            border: 2px solid var(--button-green);
+        }
+        
+        .btn-guide:hover {
+            background-color: transparent;
+            color: var(--button-green);
+            transform: translateY(-5px);
+        }
+        
+        .btn-phone {
+            background-color: var(--button-green);
+            color: var(--white);
+            border: 2px solid var(--button-green);
+        }
+        
+        .btn-phone:hover {
+            background-color: transparent;
+            color: var(--button-green);
+            transform: translateY(-5px);
+        }
+        
+        /* Content Section */
+        .content-section {
+            display: none;
+            padding: 50px 0;
+            animation: fadeIn 0.8s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .content-section.active {
+            display: block;
+        }
+        
+        .guide-content {
+            background-color: var(--white);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: var(--shadow);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .section-title i {
+            font-size: 2rem;
+        }
+        
+        .guide-section {
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .guide-section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        h3 {
+            font-size: 1.6rem;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        h3 i {
+            font-size: 1.4rem;
+        }
+        
+        p, ul {
+            margin-bottom: 15px;
+        }
+        
+        ul {
+            padding-left: 20px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        .product-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .product-item {
+            background-color: var(--accent-color);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        
+        /* Video Section Titles */
+        .video-title {
+            text-align: center;
+            color: var(--primary-color);
+            margin: 15px 0 5px;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            color: var(--light-text);
+            font-size: 0.9rem;
+            margin-top: 30px;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        .love-note {
+            font-style: italic;
+            margin-top: 10px;
+            color: var(--primary-color);
+        }
+        
+        .designer-credit {
+            margin-top: 15px;
+            font-size: 0.8rem;
+            color: var(--light-text);
+            padding-top: 15px;
+            border-top: 1px dashed rgba(0, 0, 0, 0.1);
+        }
+        
+        .designer-credit a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .designer-credit a:hover {
+            color: var(--button-pink);
+            text-decoration: underline;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .current-emoji {
+                font-size: 3.5rem;
+            }
+            
+            .btn {
+                min-width: 100%;
+            }
+            
+            .guide-content {
+                padding: 25px;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .phone-number {
+                font-size: 1.5rem;
+            }
+            
+            .video-container {
+                margin: 20px auto;
+            }
+            
+            .emoji-container {
+                height: 100px;
+                padding: 15px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .current-emoji {
+                font-size: 2.8rem;
+            }
+            
+            .button-container {
+                gap: 15px;
+            }
+            
+            .btn {
+                padding: 15px 20px;
+                font-size: 1rem;
+            }
+            
+            .phone-number {
+                font-size: 1.3rem;
+            }
+            
+            .video-label {
+                font-size: 0.8rem;
+                padding: 6px 12px;
+                top: 10px;
+                right: 10px;
+            }
+            
+            .emoji-container {
+                height: 90px;
+                padding: 10px;
+            }
+            
+            .designer-credit {
+                font-size: 0.7rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="title-container">
+                <h1>Sensation Hub</h1>
+                <div class="subtitle">Your hair matters</div>
+            </div>
+            
+            <!-- Phone Number Display -->
+            <div class="phone-number">
+                <i class="fas fa-phone-alt"></i> (619) 994-2581
+            </div>
+            
+            <!-- Emoji Container with New Gradient -->
+            <div class="emoji-container">
+                <div class="single-emoji-container">
+                    <!-- Single emoji that changes with JavaScript -->
+                    <div id="current-emoji" class="current-emoji emoji-1">💇‍♀️</div>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <main class="container">
+        <!-- First YouTube Video Section - WITH PRIVACY ENHANCED MODE -->
+        <div class="video-title">Hair Sensation Transformation</div>
+        <section class="video-container">
+            <div class="video-label youtube-label">
+                <i class="fab fa-youtube"></i> YouTube Video
+            </div>
+            <div class="video-wrapper">
+                <iframe 
+                    src="https://www.youtube-nocookie.com/embed/aaMz7s6Fq5A?si=jEZACUSZ8T9-ySFW&modestbranding=1&rel=0&showinfo=0" 
+                    title="Hair Sensation Transformation Video" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </section>
+        
+        <!-- Second YouTube Video Section - WITH PRIVACY ENHANCED MODE -->
+        <div class="video-title">Hair Sensation Styling & Care</div>
+        <section class="video-container">
+            <div class="video-label youtube-label">
+                <i class="fab fa-youtube"></i> YouTube Video
+            </div>
+            <div class="video-wrapper">
+                <iframe 
+                    src="https://www.youtube-nocookie.com/embed/Z9hlUOCuipM?modestbranding=1&rel=0&showinfo=0" 
+                    title="Hair Sensation Styling & Care Video" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </section>
+        
+        <!-- Button Container -->
+        <div class="button-container">
+            <a href="tel:6199942581" class="btn btn-phone">
+                <i class="fas fa-phone-alt"></i>
+                Call Us Now
+            </a>
+            
+            <a href="https://www.yelp.com/biz/hair-sensation-la-jolla" target="_blank" class="btn btn-reviews">
+                <i class="fab fa-yelp"></i>
+                Click here to see our reviews
+            </a>
+            
+            <a href="#" id="guide-btn" class="btn btn-guide">
+                <i class="fas fa-book-open"></i>
+                💇‍♀️ The Ultimate Guide to Healthy, Beautiful Hair
+            </a>
+        </div>
+        
+        <!-- Hair Guide Content -->
+        <section id="guide-content" class="content-section">
+            <div class="guide-content">
+                <h2 class="section-title">
+                    <i class="fas fa-crown"></i>
+                    The Ultimate Guide to Healthy, Beautiful Hair
+                    <i class="fas fa-crown"></i>
+                </h2>
+                <p class="subtitle" style="text-align: center; color: var(--secondary-color); margin-bottom: 30px;">Tips from Hair Sensation Experts</p>
+                
+                <div class="guide-section">
+                    <p>Whether you're coming in for extensions, color, or a smoothing treatment, healthy hair starts with understanding your hair and scalp. At Hair Sensation, we believe great hair isn't just about the look — it's about strength, shine, and long-term care.</p>
+                </div>
+                
+                <div class="guide-section">
+                    <h3><i class="fas fa-search"></i> 1. Know Your Hair Type and Texture</h3>
+                    <p>Before choosing any service — extensions, keratin, color, or wave — it's important to understand your natural hair texture:</p>
+                    <ul>
+                        <li><strong>Fine hair</strong> may look thinner and be more prone to breakage.</li>
+                        <li><strong>Thick hair</strong> often handles texture and styling well but needs hydration.</li>
+                        <li><strong>Curly hair</strong> thrives with moisture and gentle handling.</li>
+                    </ul>
+                    <p>Choosing the right cut, product, and treatment for your texture makes hair healthier and easier to manage.</p>
+                </div>
+                
+                <div class="guide-section">
+                    <h3><i class="fas fa-spa"></i> 2. Scalp Health = Hair Growth</h3>
+                    <p>Healthy hair grows from a healthy scalp. Like skin, your scalp needs gentle cleansing, hydration, and good circulation. Here's how to support it:</p>
+                    <ul>
+                        <li>✔ Use a gentle shampoo and conditioner (sulfate-free when possible)</li>
+                        <li>✔ Massage your scalp for 1–2 minutes before washing (stimulates blood flow)</li>
+                        <li>✔ Avoid overwashing — 2–3 times a week is usually best for most hair types</li>
+                    </ul>
+                    <p>A balanced scalp encourages strong hair from the root — reducing breakage and fall-out.</p>
+                </div>
+                
+                <div class="guide-section">
+                    <h3><i class="fas fa-gem"></i> 3. Choose Treatments That Strengthen</h3>
+                    <p>At a professional salon like Hair Sensation, your stylist can recommend treatments tailored to your needs — including:</p>
+                    
+                    <h4 style="color: var(--primary-color); margin-top: 20px;">Keratin Complex & Brazilian Blowouts</h4>
+                    <p>These help smooth frizz, strengthen strands, and lock in moisture. Aftercare makes all the difference: avoid washing hair immediately, use sulfate-free products, and protect from heat.</p>
+                    
+                    <h4 style="color: var(--primary-color); margin-top: 20px;">Color Correction & Highlights</h4>
+                    <p>Professional color helps prevent dryness and damage. When done right, it enhances shine and tone — but it always needs hydration and protection afterward. Invest in nourishing conditioners and a weekly deep mask.</p>
+                </div>
+                
+                <div class="guide-section">
+                    <h3><i class="fas fa-leaf"></i> 4. Extensions with Care</h3>
+                    <p>Extensions can be life-changing — adding length, volume, and style. But to keep your own hair healthy:</p>
+                    <ul>
+                        <li>✅ Choose the right technique for your hair type</li>
+                        <li>✅ Don't sleep with wet hair</li>
+                        <li>✅ Brush gently from ends up — never tug at the roots</li>
+                        <li>✅ Use lightweight oils and hydrating serums</li>
+                    </ul>
+                    <p>Proper maintenance keeps both extensions and natural hair strong, silky, and beautiful.</p>
+                </div>
+                
+                <div class="guide-section">
+                    <h3><i class="fas fa-fire"></i> 5. Daily Habits That Protect Your Hair</h3>
+                    <p>Healthy hair isn't only about salon visits — it's about lifestyle too:</p>
+                    <ul>
+                        <li><strong>Protect from heat:</strong> Always use a heat protectant before blow-drying or styling.</li>
+                        <li><strong>Reduce friction:</strong> Sleep on a silk or satin pillowcase.</li>
+                        <li><strong>Limit chemical overload:</strong> Too many chemical services too quickly can weaken strands.</li>
+                        <li><strong>Trim regularly:</strong> Keeps ends looking fresh and reduces split ends.</li>
+                    </ul>
+                </div>
+                
+                <div class="guide-section">
+                    <h3><i class="fas fa-tint"></i> 6. Best Products for At-Home Care</h3>
+                    <p>High-quality products matter:</p>
+                    <div class="product-list">
+                        <div class="product-item">🌿 Hydrating shampoo & conditioner</div>
+                        <div class="product-item">💆‍♀️ Deep conditioning mask</div>
+                        <div class="product-item">🌸 Lightweight serum or oil</div>
+                        <div class="product-item">🪮 Wide-tooth comb or soft brush</div>
+                    </div>
+                    <p>Using salon-recommended products between appointments keeps your hair vibrant and healthy.</p>
+                </div>
+                
+                <div class="guide-section">
+                    <h3><i class="fas fa-brain"></i> Final Tip: Ask Your Stylist!</h3>
+                    <p>Every head of hair is unique — that's why a professional consultation is so valuable. A stylist can evaluate your hair's density, porosity, and elasticity to build a custom plan just for you.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p>© 2023 Hair Sensation. All rights reserved.</p>
+            <p class="love-note">Crafted with love for beautiful hair experiences</p>
+            <div class="designer-credit">
+                Design by <a href="tel:41587706987">Tania Domingue (415) 877-06987</a>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const guideBtn = document.getElementById('guide-btn');
+            const guideContent = document.getElementById('guide-content');
+            const currentEmoji = document.getElementById('current-emoji');
+            
+            // Emoji sequence
+            const emojis = ['💇‍♀️', '✨', '🌸', '💆‍♀️', '🪮', '💖', '🌟', '💇‍♂️', '🪒', '💐', '👑', '💄'];
+            let currentIndex = 0;
+            
+            // Function to change emoji
+            function changeEmoji() {
+                currentIndex = (currentIndex + 1) % emojis.length;
+                currentEmoji.textContent = emojis[currentIndex];
+                
+                // Update animation class for CSS timing
+                currentEmoji.className = 'current-emoji';
+                setTimeout(() => {
+                    currentEmoji.classList.add(`emoji-${(currentIndex % 12) + 1}`);
+                }, 10);
+            }
+            
+            // Change emoji every 2 seconds (matches CSS animation duration)
+            setInterval(changeEmoji, 2000);
+            
+            // Toggle guide content visibility
+            guideBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                if (guideContent.classList.contains('active')) {
+                    guideContent.classList.remove('active');
+                    window.scrollTo({top: 0, behavior: 'smooth'});
+                } else {
+                    guideContent.classList.add('active');
+                    guideContent.scrollIntoView({behavior: 'smooth'});
+                }
+            });
+            
+            // Add interaction to emoji
+            currentEmoji.addEventListener('click', function() {
+                // Make emoji bigger temporarily
+                this.style.transform = 'scale(2)';
+                this.style.zIndex = '10';
+                
+                // Reset after 0.5 seconds
+                setTimeout(() => {
+                    this.style.transform = '';
+                    this.style.zIndex = '';
+                }, 500);
+            });
+            
+            // Add a fun effect to buttons
+            const buttons = document.querySelectorAll('.btn');
+            buttons.forEach(button => {
+                button.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px)';
+                });
+                
+                button.addEventListener('mouseleave', function() {
+                    if (!this.id === 'guide-btn' || !guideContent.classList.contains('active')) {
+                        this.style.transform = 'translateY(0)';
+                    }
+                });
+            });
+            
+            // Phone button click handler
+            const phoneBtn = document.querySelector('.btn-phone');
+            phoneBtn.addEventListener('click', function(e) {
+                // On mobile, this will trigger the phone dialer
+                // On desktop, we'll show a confirmation message
+                if (!/Mobi|Android/i.test(navigator.userAgent)) {
+                    e.preventDefault();
+                    alert('Call us at (619) 994-2581\nWe look forward to speaking with you!');
+                }
+            });
+            
+            // Designer phone link handler
+            const designerPhone = document.querySelector('.designer-credit a');
+            designerPhone.addEventListener('click', function(e) {
+                // On mobile, this will trigger the phone dialer
+                // On desktop, we'll show a confirmation message
+                if (!/Mobi|Android/i.test(navigator.userAgent)) {
+                    e.preventDefault();
+                    alert('Contact the designer at (415) 877-06987\nTania Domingue - Hair Sensation Brand Hub');
+                }
+            });
+            
+            // Video interaction
+            const videoContainers = document.querySelectorAll('.video-container');
+            videoContainers.forEach(container => {
+                container.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px)';
+                    this.style.boxShadow = '0 15px 35px rgba(0, 0, 0, 0.25)';
+                });
+                
+                container.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                    this.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.2)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
