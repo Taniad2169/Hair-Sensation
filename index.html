@@ -199,6 +199,27 @@
             color: #FF0000;
         }
         
+        /* Video Title Styles */
+        .video-title-section {
+            text-align: center;
+            margin: 15px 0 5px;
+        }
+        
+        .video-main-title {
+            color: var(--primary-color);
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .video-subtitle {
+            color: var(--secondary-color);
+            font-size: 1.2rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+        
         /* Button Styles with New Colors - Updated layout */
         .button-container {
             display: flex;
@@ -262,6 +283,76 @@
         .btn-phone:hover {
             background-color: transparent;
             color: var(--button-green);
+            transform: translateY(-5px);
+        }
+        
+        /* NEW: Services Section Styles */
+        .services-section {
+            background: linear-gradient(135deg, var(--emoji-gradient-start) 0%, var(--emoji-gradient-end) 100%);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px auto;
+            max-width: 800px;
+            box-shadow: var(--shadow);
+            color: white;
+        }
+        
+        .services-header {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+        
+        .services-list {
+            list-style: none;
+            margin-bottom: 35px;
+        }
+        
+        .service-item {
+            background: rgba(255, 255, 255, 0.15);
+            margin: 12px 0;
+            padding: 18px 25px;
+            border-radius: 15px;
+            border-left: 5px solid var(--button-green);
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .service-item:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateX(5px);
+        }
+        
+        .service-item i {
+            margin-right: 15px;
+            font-size: 1.3rem;
+            color: var(--button-green);
+        }
+        
+        .consultation-btn {
+            display: block;
+            width: 100%;
+            background-color: var(--button-green);
+            color: var(--white);
+            text-align: center;
+            padding: 20px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            border-radius: 50px;
+            text-decoration: none;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+            border: 2px solid var(--button-green);
+        }
+        
+        .consultation-btn:hover {
+            background-color: transparent;
+            color: var(--white);
             transform: translateY(-5px);
         }
         
@@ -357,15 +448,6 @@
             font-size: 0.9rem;
         }
         
-        /* Video Section Titles */
-        .video-title {
-            text-align: center;
-            color: var(--primary-color);
-            margin: 15px 0 5px;
-            font-size: 1.3rem;
-            font-weight: 600;
-        }
-        
         /* Footer */
         footer {
             text-align: center;
@@ -441,6 +523,28 @@
                 height: 100px;
                 padding: 15px;
             }
+            
+            .services-section {
+                padding: 25px;
+                margin: 30px auto;
+            }
+            
+            .services-header {
+                font-size: 2rem;
+            }
+            
+            .service-item {
+                padding: 15px 20px;
+                font-size: 1rem;
+            }
+            
+            .video-main-title {
+                font-size: 1.7rem;
+            }
+            
+            .video-subtitle {
+                font-size: 1.1rem;
+            }
         }
         
         @media (max-width: 480px) {
@@ -476,6 +580,23 @@
             .designer-credit {
                 font-size: 0.7rem;
             }
+            
+            .services-header {
+                font-size: 1.8rem;
+            }
+            
+            .service-item {
+                padding: 12px 15px;
+                font-size: 0.95rem;
+            }
+            
+            .video-main-title {
+                font-size: 1.5rem;
+            }
+            
+            .video-subtitle {
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
@@ -504,7 +625,9 @@
     
     <main class="container">
         <!-- First YouTube Video Section - WITH PRIVACY ENHANCED MODE -->
-        <div class="video-title">Hair Sensation Transformation</div>
+        <div class="video-title-section">
+            <div class="video-main-title">Hair Sensation Transformation</div>
+        </div>
         <section class="video-container">
             <div class="video-label youtube-label">
                 <i class="fab fa-youtube"></i> YouTube Video
@@ -520,21 +643,61 @@
             </div>
         </section>
         
-        <!-- Second YouTube Video Section - WITH PRIVACY ENHANCED MODE -->
-        <div class="video-title">Hair Sensation Styling & Care</div>
+        <!-- Second YouTube Video Section - UPDATED WITH NEW VIDEO LINK AND TITLES -->
+        <div class="video-title-section">
+            <div class="video-main-title">Hair Sensation</div>
+            <div class="video-subtitle">Extension/Full Service Salon</div>
+        </div>
         <section class="video-container">
             <div class="video-label youtube-label">
                 <i class="fab fa-youtube"></i> YouTube Video
             </div>
             <div class="video-wrapper">
                 <iframe 
-                    src="https://www.youtube-nocookie.com/embed/Z9hlUOCuipM?modestbranding=1&rel=0&showinfo=0" 
-                    title="Hair Sensation Styling & Care Video" 
+                    src="https://www.youtube-nocookie.com/embed/U9fF6Tc_PVY?si=U9fF6Tc_PVY&modestbranding=1&rel=0&showinfo=0" 
+                    title="Hair Sensation - Extension/Full Service Salon" 
                     frameborder="0" 
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                     allowfullscreen>
                 </iframe>
             </div>
+        </section>
+        
+        <!-- NEW: Services Section Added Below Second Video -->
+        <section class="services-section">
+            <h2 class="services-header">Extension/Full Service Salon</h2>
+            
+            <ul class="services-list">
+                <li class="service-item">
+                    <i class="fas fa-ruler-combined"></i>
+                    <strong>Great Length Expert</strong> – Professional hair extension application and maintenance
+                </li>
+                <li class="service-item">
+                    <i class="fas fa-spa"></i>
+                    <strong>Texture and Hair Treatment</strong> – Specialized treatments for all hair types and conditions
+                </li>
+                <li class="service-item">
+                    <i class="fas fa-palette"></i>
+                    <strong>Hair Color</strong> – Custom coloring, highlights, balayage, and corrective color services
+                </li>
+                <li class="service-item">
+                    <i class="fas fa-hand-sparkles"></i>
+                    <strong>Manicure/Pedicure</strong> – Nail care, gel polish, nail art, and spa treatments
+                </li>
+                <li class="service-item">
+                    <i class="fas fa-eye"></i>
+                    <strong>Eye Lash Extension</strong> – Volume, hybrid, and classic lash applications
+                </li>
+                <li class="service-item">
+                    <i class="fas fa-cut"></i>
+                    <strong>Haircut and Styling for All Hair Types</strong> – Precision cuts and styling for every texture and length
+                </li>
+            </ul>
+            
+            <!-- UPDATED BUTTON TEXT -->
+            <a href="sms:6199942581?body=Hi!%20I'd%20like%20to%20book%20a%20consultation%20for%20services.%20Please%20let%20me%20know%20your%20available%20times." class="consultation-btn">
+                <i class="fas fa-comment-alt"></i> Click to Text for a Consultation
+            </a>
         </section>
         
         <!-- Button Container -->
@@ -754,6 +917,28 @@
                     this.style.transform = 'translateY(0)';
                     this.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.2)';
                 });
+            });
+            
+            // NEW: Services section hover effects
+            const serviceItems = document.querySelectorAll('.service-item');
+            serviceItems.forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateX(8px) scale(1.02)';
+                });
+                
+                item.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateX(0) scale(1)';
+                });
+            });
+            
+            // UPDATED: Consultation button interaction with new text reference
+            const consultationBtn = document.querySelector('.consultation-btn');
+            consultationBtn.addEventListener('click', function(e) {
+                // On desktop, show a confirmation for SMS
+                if (!/Mobi|Android/i.test(navigator.userAgent)) {
+                    e.preventDefault();
+                    alert('Clicking "Click to Text for a Consultation" will open your messaging app on mobile devices.\nOn desktop, please text (619) 994-2581 to book a consultation.');
+                }
             });
         });
     </script>
